@@ -184,7 +184,9 @@ int main (int argc, char *argv[]) {
 	ev_button[BTN2_PRESS].value = 1;
 
 	// panel initialization
-	initialize_panel(0);
+	if (conf.init_device) {
+		initialize_panel(0);
+	}
 
 	if (foreground)
 		printf("pannel initialized\n");

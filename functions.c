@@ -109,25 +109,23 @@ int init_panel (void) {
 	unsigned char init_seq[8] = { 0xf5, 0xf3, 0x0a, 0xf3, 0x64, 0xf3, 0xc8, 0xf4 };
 	int ret=1;
 
-	if (conf.serial_device) {
-		for (i=0;i<8;i++) {
+	for (i=0;i<8;i++) {
 
-			usleep (10000);
-			res = write (fd_serial, &init_seq[i], 1);
-			res = read (fd_serial, &r, 1);
+		usleep (10000);
+		res = write (fd_serial, &init_seq[i], 1);
+		res = read (fd_serial, &r, 1);
 
-			if (res < 0)
-				die ("error reading from serial port");
+		if (res < 0)
+			die ("error reading from serial port");
 
-			if (DEBUG)
-				printf ("SENT: %.02X READ: %.02X\n", init_seq[i], r);
+		if (DEBUG)
+			printf ("SENT: %.02X READ: %.02X\n", init_seq[i], r);
 
-			if (r != CMD_OK ) {
-				fprintf (stderr,"panel initialization failed: 0x%.02X != 0x%.02X\n", r, CMD_OK);
-				ret=0;
-			}
-
+		if (r != CMD_OK ) {
+			fprintf (stderr,"panel initialization failed: 0x%.02X != 0x%.02X\n", r, CMD_OK);
+			ret=0;
 		}
+
 	}
 
 	return ret;

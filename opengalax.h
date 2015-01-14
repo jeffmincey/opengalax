@@ -38,7 +38,7 @@
 #define BTN2_RELEASE 2
 #define BTN2_PRESS 3
 
-#define DEBUG 0
+#define DEBUG 1
 
 #define die(str, args...) do { \
 	perror(str); \
