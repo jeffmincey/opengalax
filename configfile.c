@@ -144,6 +144,14 @@ conf_data config_parse (void) {
 			temp[len+1]='\0';
 			config.psmouse = atoi(temp);
 		}
+
+		if ((strncmp ("init_device=", input, 12)) == 0) {
+			strncpy (temp, input + 12,MAXLEN-1);
+			len=strlen(temp);
+			temp[len+1]='\0';
+			config.init_device = atoi(temp);
+		}
+
 	}
 
 	fclose(fd);

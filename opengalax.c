@@ -139,6 +139,7 @@ int main (int argc, char *argv[]) {
 		printf ("\trightclick_range=%d\n",conf.rightclick_range);
 		printf ("\tdirection=%d\n",conf.direction);
 		printf ("\tpsmouse=%d\n",conf.psmouse);
+		printf ("\tinit_device=%d\n",conf.init_device);
 		printf ("\nCalibration data:\n");
 		printf ("\txmin=%d\n",calibration.xmin);
 		printf ("\txmax=%d\n",calibration.xmax);
