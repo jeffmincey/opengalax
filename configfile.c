@@ -22,6 +22,7 @@ static const conf_data default_config = {
 	/* rightclick_range */ 10,
 	/* direction */ 0,
 	/* psmouse */ 0,
+	/* init_device */ 1,
 };
 
 static const calibration_data default_calibration = {
@@ -50,6 +51,8 @@ int create_config_file (char* file) {
 	fprintf(fd, "# set psmouse=1 if you have a mouse connected into the same port\n");
 	fprintf(fd, "# this usually requires i8042.nomux=1 and i8042.reset kernel parameters\n");
 	fprintf(fd, "psmouse=%d\n", default_config.psmouse);
+	fprintf(fd, "init_device=%d\n", default_config.init_device);
+	
 	fprintf(fd, "\n#### calibration data:\n");
 	fprintf(fd, "# - values should range from 0 to 2047\n");
 	fprintf(fd, "# - right/bottom must be bigger than left/top\n");

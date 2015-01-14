@@ -54,6 +54,7 @@ typedef struct {
 	int rightclick_range;
 	int direction;
 	int psmouse;
+	int init_device;
 } conf_data;
 
 typedef struct {
