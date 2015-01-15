@@ -7,7 +7,7 @@
  *   as published by the Free Software Foundation; either version 2
  *   of the License, or (at your option) any later version.
  *
- *   inspired on: 
+ *   inspired on:
  *     http://github.com/superatrain/SPF-Panel-Driver
  *     http://thiemonge.org/getting-started-with-uinput
  *
@@ -119,7 +119,7 @@ int main (int argc, char *argv[]) {
 
 		/* daemon running here */
 		setsid();
-		if (chdir("/") != 0) 
+		if (chdir("/") != 0)
 			die("Could not chdir");
 		umask(0);
 		printf("forked into background\n");
@@ -235,12 +235,12 @@ int main (int argc, char *argv[]) {
 
 			res = read (fd_serial, &click, sizeof (click));
 			if (click!=RELEASE && click!=PRESS) {
-				if (conf.psmouse) 
+				if (conf.psmouse)
 					psmouse_interrupt(click);
 				else
 					printf ("ERROR: click=%.02X\n", click);
 			}
-		} while (click!=RELEASE && click!=PRESS);
+		} while !(click & RELEASE);
 
 		res = read (fd_serial, &xa, sizeof (xa));
 		if (xa > XA_MAX) printf ("ERROR: xa=%.02X\n", xa);
@@ -362,7 +362,7 @@ int main (int argc, char *argv[]) {
 
 			// emulate right click by press and hold
 			if (time_elapsed_ms (&tv_btn2_click, &tv_current, conf.rightclick_duration)) {
-				if ( ( x-(conf.rightclick_range/2) < prev_x && prev_x < x+(conf.rightclick_range/2) ) && 
+				if ( ( x-(conf.rightclick_range/2) < prev_x && prev_x < x+(conf.rightclick_range/2) ) &&
 				     ( y-(conf.rightclick_range/2) < prev_y && prev_y < y+(conf.rightclick_range/2) ) ) {
 					btn2_state=BTN2_PRESS;
 					btn1_state=BTN1_RELEASE;
